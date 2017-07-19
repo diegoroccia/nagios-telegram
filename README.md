@@ -4,30 +4,22 @@ this project aims to provide a connector between nagios and telegram using the B
 
 ## Requirements
 
-* nagios >= 4.0.7 (they introduced Json endpoints)
+* nagios + mk_livestatus
 * python3, with the following libraries
-  * requests
   * python-telegram-bot
+  * python-mk-livestatus
 
 ## Preliminary steps
 
 * Create a new bot on telegram. [Guide Here](https://core.telegram.org/bots#creating-a-new-bot)
 * Create a local_settings.py file with the following content:
 ```
-config = {
-  "BOTKEY": "sdfsdfsdfsdfsdf",
-  "NAGIOSUSER": "sdfsdfsdfsdfsdfd",
-  "NAGIOSPWD": "rsdfsdfsd",
-  "NAGIOSURL": "sdfsdf" 
-}
+config = { "BOTKEY": "sdfsdfsdfsdfsdf" }
 ```
 
 these configurations can also be passed to the script using environment variables, calling them `BOT_<configitem>`
 ```
 export "BOTKEY"="sdfsdfsdfsdfsdf"
-export "NAGIOSUSER"="sdfsdfsdfsdfsdfd"
-export "NAGIOSPWD"="rsdfsdfsd"
-export "NAGIOSURL"="sdfsdf" 
 ```
 
 ## Running the bot
@@ -41,7 +33,5 @@ docker build -t nagios-telegram .
 
 docker run -d -t nagios-telegram \
            -e  "BOTKEY"="sdfsdfsdfsdfsdf" \
-           -e  "NAGIOSUSER"="sdfsdfsdfsdfsdfd" \
-           -e  "NAGIOSPWD"="rsdfsdfsd" \
-           -e  "NAGIOSURL"="sdfsdf" 
+           -v /path/to/mklive/socket:/srv/livesocket
 ```
