@@ -1,0 +1,7 @@
+version: '2'
+
+services:
+  telegram-bot:
+    build: .
+    volumes:
+      - /opt/nagios/var/rw/live:/srv/livesocket
