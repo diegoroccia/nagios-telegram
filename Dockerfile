@@ -6,6 +6,7 @@ RUN pip3 install python-telegram-bot
 RUN pip3 install requests
 RUN pip3 install ipython
 
-ADD bin/bot.py /
+ADD bot.py /
+ADD local_settings.py /
 
 CMD python3 /bot.py 
