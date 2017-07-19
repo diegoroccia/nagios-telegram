@@ -24,7 +24,13 @@ export "BOTKEY"="sdfsdfsdfsdfsdf"
 
 ## Running the bot
 
+### Manually
+
 Launch `python bot.py`
+
+### with Docker
+
+#### Dockerfile
 
 a Dockerfile is also provided:
 
@@ -34,4 +40,11 @@ docker build -t nagios-telegram .
 docker run -d -t nagios-telegram \
            -e  "BOTKEY"="sdfsdfsdfsdfsdf" \
            -v /path/to/mklive/socket:/srv/livesocket
+```
+
+#### Docker-compose
+you will need to change the docker-compose.yaml file to change the socket path
+
+```
+docker-compose up -d
 ```
