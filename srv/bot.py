@@ -6,7 +6,7 @@ import re
 import mk_livestatus
 
 
-config = { k.replace("BOT_",""): os.environ[k] for k in os.environ if  k.find("BOT_") == 0}
+config = dict(filter(lambda x : x[0].startswith("BOT_"), os.environ.items()))
 
 from local_settings import *
 
